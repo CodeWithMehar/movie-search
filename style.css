@@ -1,0 +1,216 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: url('bg.jpg');
+    background-size: cover; /* Change to cover for better background scaling */
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    background: black;
+    opacity: 0.6;
+    position: relative;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+    position: absolute;
+    top: 30%;
+    text-align: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 5%;
+    padding: 0 20px; /* Add padding for better spacing */
+}
+
+.signbtn {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.logo {
+    width: 100px; /* Adjust logo size */
+    margin-left: 20px;
+    position: absolute;
+    top: 0;
+}
+
+.search-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: 70%;
+}
+
+.search-container input {
+    background-color: transparent !important;
+}
+
+.search-container input::placeholder {
+    color: #fff !important;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.signbtn2 {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 60px;
+}
+
+#titleSearch {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Desktop layout */
+    gap: 20px;
+    padding: 20px 0px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    bottom: 100%;
+}
+
+.boxes {
+    background-color: black;
+    width: 100%;
+    height: auto;
+}
+
+.image-box {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Media Queries for Tablet and Mobile */
+
+/* Tablet view (max-width: 768px) */
+@media (max-width: 768px) {
+    body{
+        background-size: cover; /* Change background size for better scaling */
+    }
+    h1 {
+        font-size: 40px; /* Smaller font size for tablet */
+        top: 25%; /* Adjust vertical position */
+    }
+    
+    .header {
+       justify-content: space-around;/* Stack logo and button */
+        align-items: center;
+    }
+    
+    .logo {
+        width: 120px; /* Adjust logo size */
+        margin: 0;
+    }
+    
+    .signbtn {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+    
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+
+    .image-box {
+        width: 100%; /* Full width for each image box */
+    }
+
+    .search-container {
+        top: 60%; /* Move search bar up on smaller screens */
+    }
+}
+
+/* Mobile view (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 40px; /* Even smaller for mobile */
+        top: 20%;
+    }
+    
+    .header {
+        justify-content: space-around;/* Stack logo and button */
+        align-items: center;
+    
+    }
+    
+    .logo {
+        width: 100px; /* Smaller logo */
+        margin-left: 0;
+    }
+
+    .signbtn {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .image-gallery {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+        padding: 10px 0;
+    }
+
+    .image-box {
+        width: 100%; /* Full width image box */
+    }
+    
+    .search-container {
+        width: 90%;
+        top: 50%;
+    }
+
+    #titleSearch {
+        width: 100%;
+        padding: 10px;
+    }
+}

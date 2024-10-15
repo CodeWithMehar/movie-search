@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery with Search</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="header">
+      <div><img src="logo.png" alt="" class="logo" /></div>
+      <div><button class="signbtn">Sign In</button></div>
+    </div>
+    <h1>
+      Unlimited movies, TV <br />
+      shows, and more
+    </h1>
+
+    <div class="search-container">
+      <input type="text" placeholder="search movie by title" id="titleSearch" />
+      <div><button class="signbtn2">SEARCH</button></div>
+    </div>
+    <div class="boxes">
+      <div class="image-gallery"></div>
+    </div>
+ 
+    <script>
+      let url;
+      let gallery = document.querySelector(".image-gallery");
+      let titlesearch = document.querySelector("#titleSearch");
+      let getMovie = async (title = "") => {
+        if (title === "") {
+          url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1`;
+        } else {
+          url = `https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=${title}`;
+        }
+        try {
+          let items = "";
+          let finaldata = await fetch(url);
+          let finalmovie = await finaldata.json();
+          let { results } = finalmovie;
+          results.forEach(function (element) {
+            let { poster_path, title, release_date } = element;
+            // let img = element.poster_path;
+            // let title = element.title;
+            // let date = element.release_date;
+            items += `
+            <div class="image-box"><img src="https://image.tmdb.org/t/p/w1280/${poster_path}" alt="">
+                  <h3> ${title} | ${release_date}
+            </h3></div>
+          `;
+          });
+
+          gallery.innerHTML = items;
+        } catch (error) {}
+      };
+      getMovie();
+      titleSearch.addEventListener("keyup", (event) => {
+        getMovie(event.target.value);
+      });
+    </script>
+    
+  </body>
+</html>
